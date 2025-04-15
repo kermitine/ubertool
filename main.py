@@ -1,4 +1,4 @@
-version = str('0.1.0')
+version = '0.1.1'
 trip = 1
 import time
 print('Ubertool', version, 'initialized')
@@ -49,7 +49,7 @@ def get_user_values():
     return trip_revenue, trip_distance, miles_per_gallon, gas_cost_per_gallon
 
 def calculate_values(trip_revenue, trip_distance, miles_per_gallon, gas_cost_per_gallon):
-    print('\n' + '\n' + '\n')
+    print('\n' * 3)
 
     gas_consumed = find_gas_consumed(miles_per_gallon, trip_distance)
     print('Calculated gas consumed:', round(gas_consumed, 2), 'gallons')
@@ -70,4 +70,8 @@ while True:
     trip_revenue, trip_distance, miles_per_gallon, gas_cost_per_gallon = get_user_values()
     calculate_values(trip_revenue, trip_distance, miles_per_gallon, gas_cost_per_gallon)
     time.sleep(4)
-    print('\n' + '\n' + '\n')
+
+    cont = input('Would you like to calculate another trip? (y/n)?' + '\n').strip().lower()
+    if cont != 'y':
+        break
+    print('\n' * 3)
