@@ -1,7 +1,12 @@
 version = '0.1.1'
 trip = 1
 import time
+from KermLib.KermLib import *
+
+
+KermLib.ascii_run()
 print('Ubertool', version, 'initialized')
+print('\n' * 3)
 
 fallback_miles_per_gallon = 28.6    # defaults to 28.6 if left blank, derived from 2019 330i mpg
 fallback_gas_cost_per_gallon = 4.619  # default if left blank, derived from cost of costco 87
@@ -69,9 +74,10 @@ while True:
     trip += 1
     trip_revenue, trip_distance, miles_per_gallon, gas_cost_per_gallon = get_user_values()
     calculate_values(trip_revenue, trip_distance, miles_per_gallon, gas_cost_per_gallon)
-    time.sleep(4)
+    time.sleep(2)
 
-    cont = input('Would you like to calculate another trip? (y/n)?' + '\n').strip().lower()
-    if cont != 'y':
+    print('Would you like to calculate another trip? (y/n)?')
+    cont = KermLib.get_user_input(['y', 'Y', 'n', 'N'])
+    if cont not in ['y', 'Y']:
         break
     print('\n' * 3)
